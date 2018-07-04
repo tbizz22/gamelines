@@ -20,28 +20,59 @@
 </head>
 
 <body>
-        <div class="row">
-                <img style="width: 100%" "height: 400px" src="Assets/images/over.jpg">
-            </div>
-    <div class="container">
- 
-
-    <ul class="collapsible">
-        <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-      </ul>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="Assets/images/nico.jpg">
+        </div>
     </div>
-<!--  -->
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header center-align">Today's Games</h2>
+            <div class="container">
+                <ul class="collapsible popout" id="games">
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="container">
+                                <div class="row center-align">
+                                    <img class="img-responsive" id="homeTeam" src="Assets/images/ducks.gif"></img>
+                                    <span class="flow-text vertical-center">
+                                        vs.
+                                    </span>
+                                    <img class="img-responsive" id="awayTeam" src="Assets/images/sabres.gif"></img>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="center-align flow-text" id="arena">Arena Name</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="collapsible-body">
+                            <div class="">Local Start Time: <span id="gameStart">4:00 PM</span></div>
+                            <div class="divider"></div>
+                            <div class="center-align pt">
+                                    <a class="waves-green white black-text btn-large center-align" data-gameID=""><i class="material-icons right">chevron_right</i>View Game Companion</a>
+                            </div>
+                        </div>
+                      
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--  -->
     <!--JS Libs  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
