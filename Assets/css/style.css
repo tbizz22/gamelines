@@ -39,7 +39,6 @@
     margin: auto;
 }
 
-
-.wholePage {
-    min-height: 100%;
+.hide {
+    display:hidden;
 }

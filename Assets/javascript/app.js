@@ -1,18 +1,15 @@
-
-
-
 var creds = token + ":" + pw;
 var encode = btoa(creds);
 var season = "2017-2018-regular";
 var date = "20180109";
 
 
- 
+
 
 function getDailySched() {
   var url = "https://api.mysportsfeeds.com/v1.2/pull/nhl/"
   var qURL = url + season + "/daily_game_schedule.json?fordate=" + date;
- 
+
   $.ajax({
     type: "GET",
     url: qURL,
@@ -25,7 +22,7 @@ function getDailySched() {
     var games = res.dailygameschedule.gameentry;
     // console.log(games);
 
-    for (var i=0; i < games.length; i++) {
+    for (var i = 0; i < games.length; i++) {
       var homeTeam = games[i].homeTeam.Name;
       var homeCity = games[i].homeTeam.City;
       var homeID = games[i].homeTeam.ID;
@@ -38,156 +35,142 @@ function getDailySched() {
       var atImg = getLogo(awayID);
       var arena = games[i].location;
       var startTime = games[i].time;
-      var gameID = date +"-"+ awayAbbrv + "-" + homeAbbrv;
+      var gameID = date + "-" + awayAbbrv + "-" + homeAbbrv;
       // console.log(gameID)
-      
-    // main list item 
-    var li = $("<li>");
-    var ch = $("<div>");
-    ch.addClass("collapsible-header");
-    
-    var cont = $("<div>");
-    cont.addClass("container");
-    
-    var row1 = $("<div>");
-    row1.addClass("row center-align");
-    
-    var ht = $("<img>");
-    ht.addClass("img-responsive");
-    ht.attr("src",htImg);
 
-    var vs = $("<span>")
-    vs.addClass("flow-text vertical-center")
-    vs.text("vs.")
+      // main list item 
+      var li = $("<li>");
+      var ch = $("<div>");
+      ch.addClass("collapsible-header");
 
-    var at =  $("<img>");
-    at.addClass("img-responsive");
-    at.attr("src",atImg);
+      var cont = $("<div>");
+      cont.addClass("container");
 
-    row1.append(ht);
-    row1.append(vs);
-    row1.append(at);
+      var row1 = $("<div>");
+      row1.addClass("row center-align");
 
-    var row2 = $("<div>");
-    row2.addClass("row");
+      var ht = $("<img>");
+      ht.addClass("img-responsive");
+      ht.attr("src", htImg);
 
-    var timediv = $("<div>")
-    timediv.addClass("col-12 center-align");
+      var vs = $("<span>")
+      vs.addClass("flow-text vertical-center")
+      vs.text("vs.")
 
-    var timebody = $("<div>")
-    timebody.addClass("flow-text");
-    timebody.text("Local Start Time: ")
+      var at = $("<img>");
+      at.addClass("img-responsive");
+      at.attr("src", atImg);
 
-    var span = $("<span>")
-    span.text(startTime);
-    timebody.append(span);
+      row1.append(ht);
+      row1.append(vs);
+      row1.append(at);
 
+      var row2 = $("<div>");
+      row2.addClass("row");
 
-    // collapsible section
+      var timediv = $("<div>")
+      timediv.addClass("col-12 center-align");
 
-    var cb = $("<div>");
-    cb.addClass("collapsible-body");
-    
+      var timebody = $("<div>")
+      timebody.addClass("flow-text");
+      timebody.text("Local Start Time: ")
 
-    var a = $("<div>");
-    a.addClass("center-align flow-text");
-    a.text(arena)
-    cb.append(a);
-
-    var sep = $("<div>");
-    sep.addClass("divider");
-    cb.append(sep);
-
-    var buttonDiv = $("<div>");
-    buttonDiv.addClass("center-align pt");
-    cb.append(buttonDiv);
-
-    var button = $("<a>")
-    button.addClass("waves-green white black-text btn-large center-align gameButton")
-    button.attr("data-gameID",gameID);
-    // button.attr("href","gamedetails.html")
-    button.text("View Game Companion");
-
-    buttonDiv.append(button);
-
-    var chev = $("<i>")
-    chev.addClass("material-icons right");
-    chev.text("chevron_right");
-    button.append(chev);
-    
+      var span = $("<span>")
+      span.text(startTime);
+      timebody.append(span);
 
 
+      // collapsible section
 
+      var cb = $("<div>");
+      cb.addClass("collapsible-body");
 
-    // put it together
-    timediv.append(timebody)
+      var a = $("<div>");
+      a.addClass("center-align flow-text");
+      a.text(arena)
+      cb.append(a);
 
-    row2.append(timediv)
-    cont.append(row1);
-    cont.append(row2);
-    
-    ch.append(cont);
-   
-    li.append(ch);
-    li.append(cb);
-    $("#games").append(li);
+      var sep = $("<div>");
+      sep.addClass("divider");
+      cb.append(sep);
 
+      var buttonDiv = $("<div>");
+      buttonDiv.addClass("center-align pt");
+      cb.append(buttonDiv);
 
+      var button = $("<a>")
+      button.addClass("waves-green white black-text btn-large center-align gameButton")
+      button.attr("data-gameID", gameID);
+      button.text("View Game Companion");
+      buttonDiv.append(button);
+
+      var chev = $("<i>")
+      chev.addClass("material-icons right");
+      chev.text("chevron_right");
+      button.append(chev);
+
+      // put it together
+      timediv.append(timebody)
+
+      row2.append(timediv)
+      cont.append(row1);
+      cont.append(row2);
+
+      ch.append(cont);
+
+      li.append(ch);
+      li.append(cb);
+      $("#games").append(li);
 
     }
   })
 }
 
-// getLines("20180107-NJD-NYI");
+function hideLoaderShowGames() {
+  $("#loader").hide();
+  $("#pagebody").show().removeClass("hide");
+}
 
-
-
-
-$(document).ready(function(){
-  $('.collapsible').collapsible();
-  $('.parallax').parallax();
+$(document).ready(function () {
+  
   getDailySched();
+  hideLoaderShowGames();
+  $('.collapsible').collapsible();  
+  $('.parallax').parallax();
 });
-
-
-
-
-
-
-
 
 var teams = {
   29: "Assets/images/ducks.gif",
-  30:"Assets/images/coyotes.gif",
-  11:"Assets/images/bruins.gif",
-  15:"Assets/images/sabres.gif",
-  23:"Assets/images/flames.gif",
-  3:"Assets/images/hurricanes.gif",
-  20:"Assets/images/blackhawks.gif",
-  22:"Assets/images/avalanche.gif",
-  19:"Assets/images/bluejackets.gif",
-  27:"Assets/images/stars.gif",
-  16:"Assets/images/redwings.gif",
-  24:"Assets/images/oilers.gif",
-  4:"Assets/images/panthers.gif",
-  28:"Assets/images/kings.gif",
-  25:"Assets/images/wild.gif",
-  14:"Assets/images/canadiens.gif",
-  18:"Assets/images/predators.gif",
-  7:"Assets/images/devils.gif",
-  8:"Assets/images/islanders.gif",
-  9:"Assets/images/rangers.gif",
-  13:"Assets/images/senators.gif",
-  6:"Assets/images/flyers.gif",
-  10:"Assets/images/penguins.gif",
-  26:"Assets/images/sharks.gif",
-  17:"Assets/images/blues.gif",
-  1:"Assets/images/lightning.gif",
-  12:"Assets/images/mapleleafs.gif",
-  21:"Assets/images/canucks.gif",
-  142:"Assets/images/goldenknights.gif",
-  5:"Assets/images/capitals.gif",
-  2:"Assets/images/jets.gif"
+  30: "Assets/images/coyotes.gif",
+  11: "Assets/images/bruins.gif",
+  15: "Assets/images/sabres.gif",
+  23: "Assets/images/flames.gif",
+  3: "Assets/images/hurricanes.gif",
+  20: "Assets/images/blackhawks.gif",
+  22: "Assets/images/avalanche.gif",
+  19: "Assets/images/bluejackets.gif",
+  27: "Assets/images/stars.gif",
+  16: "Assets/images/redwings.gif",
+  24: "Assets/images/oilers.gif",
+  4: "Assets/images/panthers.gif",
+  28: "Assets/images/kings.gif",
+  25: "Assets/images/wild.gif",
+  14: "Assets/images/canadiens.gif",
+  18: "Assets/images/predators.gif",
+  7: "Assets/images/devils.gif",
+  8: "Assets/images/islanders.gif",
+  9: "Assets/images/rangers.gif",
+  13: "Assets/images/senators.gif",
+  6: "Assets/images/flyers.gif",
+  10: "Assets/images/penguins.gif",
+  26: "Assets/images/sharks.gif",
+  17: "Assets/images/blues.gif",
+  1: "Assets/images/lightning.gif",
+  12: "Assets/images/mapleleafs.gif",
+  21: "Assets/images/canucks.gif",
+  142: "Assets/images/goldenknights.gif",
+  5: "Assets/images/capitals.gif",
+  2: "Assets/images/jets.gif"
 };
 
 
@@ -197,12 +180,10 @@ function getLogo(id) {
 }
 
 
-
-$("#games").on("click",".gameButton", function() {
+$("#games").on("click", ".gameButton", function () {
   var ID = $(this).data("gameid")
   console.log(ID)
   URL = "gamedetails.html"
   redirectURL = URL + "?gameid=" + ID
   window.location.href = redirectURL
-
 })
