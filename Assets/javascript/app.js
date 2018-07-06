@@ -7,13 +7,12 @@ var season = "2017-2018-regular";
 var date = "20180109";
 
 
- getDailySched();
-
+ 
 
 function getDailySched() {
   var url = "https://api.mysportsfeeds.com/v1.2/pull/nhl/"
   var qURL = url + season + "/daily_game_schedule.json?fordate=" + date;
-  console.log(qURL)
+ 
   $.ajax({
     type: "GET",
     url: qURL,
@@ -24,7 +23,7 @@ function getDailySched() {
     }
   }).then(function (res) {
     var games = res.dailygameschedule.gameentry;
-    console.log(games);
+    // console.log(games);
 
     for (var i=0; i < games.length; i++) {
       var homeTeam = games[i].homeTeam.Name;
@@ -104,8 +103,9 @@ function getDailySched() {
     cb.append(buttonDiv);
 
     var button = $("<a>")
-    button.addClass("waves-green white black-text btn-large center-align")
+    button.addClass("waves-green white black-text btn-large center-align gameButton")
     button.attr("data-gameID",gameID);
+    // button.attr("href","gamedetails.html")
     button.text("View Game Companion");
 
     buttonDiv.append(button);
@@ -145,29 +145,13 @@ function getDailySched() {
 
 $(document).ready(function(){
   $('.collapsible').collapsible();
-});
-     
-$(document).ready(function(){
   $('.parallax').parallax();
+  getDailySched();
 });
 
 
-function getLines(gameID) {
-  var url = "https://api.mysportsfeeds.com/v1.2/pull/nhl/"
-  var qURL = url + season + "/game_startinglineup.json?gameid=" + gameID;
 
-  $.ajax({
-    type: "GET",
-    url: qURL,
-    dataType: "json",
-    async: false,
-    headers: {
-      "Authorization": "Basic " + encode
-    }
-  }).then(function (res) {
-    // console.log(res);
-  })
-}
+
 
 
 
@@ -214,3 +198,11 @@ function getLogo(id) {
 
 
 
+$("#games").on("click",".gameButton", function() {
+  var ID = $(this).data("gameid")
+  console.log(ID)
+  URL = "gamedetails.html"
+  redirectURL = URL + "?gameid=" + ID
+  window.location.href = redirectURL
+
+})

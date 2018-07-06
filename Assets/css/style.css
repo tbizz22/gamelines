@@ -25,3 +25,21 @@
     opacity: .85;
     width: 60%;    
 }
+
+.center {
+    width: 100px;
+    height: 100px;    
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+
+.wholePage {
+    min-height: 100%;
+}
