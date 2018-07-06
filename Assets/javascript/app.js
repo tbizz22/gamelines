@@ -1,7 +1,10 @@
-var creds = "tbizz22:" + pw;
+
+
+
+var creds = token + ":" + pw;
 var encode = btoa(creds);
 var season = "2017-2018-regular";
-var date = "20180107";
+var date = "20180109";
 
 
  getDailySched();
@@ -10,7 +13,7 @@ var date = "20180107";
 function getDailySched() {
   var url = "https://api.mysportsfeeds.com/v1.2/pull/nhl/"
   var qURL = url + season + "/daily_game_schedule.json?fordate=" + date;
-  
+  console.log(qURL)
   $.ajax({
     type: "GET",
     url: qURL,
