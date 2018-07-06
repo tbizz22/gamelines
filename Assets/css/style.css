@@ -18,7 +18,7 @@
     font-family: 'Nunito Sans', sans-serif;
     color:white;
     font-weight: 300;
-    opacity: .99;
+    opacity: 1;
 }
 
 .bgCard {
@@ -41,4 +41,8 @@
 
 .hide {
     display:hidden;
+}
+
+.z {
+    z-index: 999;
 }
