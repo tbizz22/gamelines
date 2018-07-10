@@ -11,6 +11,7 @@ $(document).ready(function () {
     gameID = getAllUrlParams(URL).gameid
     console.log(gameID);
     getLines(gameID);
+    M.AutoInit();
 })
 
 
@@ -106,4 +107,5 @@ function getLines(gameID) {
 
 function hideLoader() {
 $("#loader").hide();
+
 }

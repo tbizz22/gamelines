@@ -1,0 +1,45 @@
+.firstName {
+    font-size: 1.15em;
+    font-weight: 300;
+    /* padding-bottom: 3px;
+    margin-bottom: 3px; */
+}
+
+.lastName {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.playerNumber {
+    font-family: Nunito+Sans;
+    font-size: 5em;
+    font-weight: 500;
+}
+
+.capt {
+
+}
+
+.fnrow {
+    margin-bottom: 0px;
+    padding-top: 20px;   
+}
+
+.lnrow {
+    margin-top: 0px;
+   
+}
+
+.pName {
+    padding-top: 20px;   
+}
+
+.shortRow {
+    margin: 5px;
+}
+
+.statRow {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}

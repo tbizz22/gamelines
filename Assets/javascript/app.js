@@ -1,7 +1,7 @@
 var creds = token + ":" + pw;
 var encode = btoa(creds);
 var season = "2017-2018-regular";
-var date = "20180109";
+var date = "20180110";
 
 
 
