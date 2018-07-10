@@ -1,3 +1,11 @@
+
+html {
+    background-color: gray;
+}
+
+.card {
+    padding: 10px;
+}
 .firstName {
     font-size: 1.15em;
     font-weight: 300;
@@ -42,4 +50,16 @@
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.noPadT {
+    padding-top: 3px;
+}
+
+.pad3 {
+    padding: 3px;   
+}
+
+.mh {
+max-height: 40px;
 }

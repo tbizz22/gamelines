@@ -4884,7 +4884,7 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+  padding: 10px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4926,7 +4926,7 @@ small {
 }
 
 .card .card-reveal {
-  padding: 24px;
+  padding: 10px;
   position: absolute;
   background-color: #fff;
   width: 100%;

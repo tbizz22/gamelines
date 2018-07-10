@@ -10,7 +10,7 @@ $(document).ready(function () {
     var URL = window.location.href;
     gameID = getAllUrlParams(URL).gameid
     console.log(gameID);
-    getLines(gameID);
+    // getLines(gameID);
     M.AutoInit();
 })
 
