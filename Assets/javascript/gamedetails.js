@@ -99,7 +99,7 @@ function getLines(gameID) {
         }
     }).then(function (res) {
         console.log(res);
-        
+
 
         hideLoader();
     })
@@ -109,3 +109,11 @@ function hideLoader() {
 $("#loader").hide();
 
 }
+
+
+
+// this needs to handle multiple dynamically created cards. 
+// $("#card").flip({
+//     axis: 'y',
+//     trigger: 'click'
+//   });
